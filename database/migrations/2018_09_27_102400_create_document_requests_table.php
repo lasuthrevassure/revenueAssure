@@ -19,7 +19,7 @@ class CreateDocumentRequestsTable extends Migration
             $table->integer('document_id');
             $table->integer('signature_id');
             $table->integer('user_id');
-            $table->json('form_values');
+            $table->text('form_values');
             $table->timestamps();
         });
     }

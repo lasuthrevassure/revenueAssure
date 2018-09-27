@@ -20,7 +20,6 @@ class CreatePaymentsTable extends Migration
             $table->string('transaction_id');
             $table->string('receipt_no');
             $table->string('bill_reference');
-            $table->string('transaction_id');
             $table->decimal('amount');
             $table->timestamps();
         });

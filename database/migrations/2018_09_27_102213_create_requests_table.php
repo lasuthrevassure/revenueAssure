@@ -19,6 +19,7 @@ class CreateRequestsTable extends Migration
             $table->integer('patient_id');
             $table->integer('document_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
