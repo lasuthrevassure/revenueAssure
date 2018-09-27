@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Patients;
+use App\States;
+use App\Locals;
+use Session;
 use Illuminate\Http\Request;
 
 class PatientsController extends Controller
@@ -14,7 +17,18 @@ class PatientsController extends Controller
      */
     public function index()
     {
-        //
+        $patients = Patients::all();
+        return view('patients.all',compact('patients'));
+    }
+
+    public function fetchlga($id){
+        $lga = Locals::where('state_id',$id)->get();
+        if($lga){
+            return response()->json($lga);
+        }
+        else{
+            return [];
+        }
     }
 
     /**
@@ -24,7 +38,13 @@ class PatientsController extends Controller
      */
     public function create()
     {
-        //
+        $states = States::all();
+        return view('patients.new',compact('states'));
+    }
+
+    public function searchPatient()
+    {
+        return view('patients.searchpat');
     }
 
     /**
@@ -35,7 +55,28 @@ class PatientsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $joe = rand(1000,10000) .'/'.date("m") . '/'. date("y");
+        $patient = Patients::create([
+            'title' => $request->title,
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'gender' => $request->gender,
+            'dob' => $request->dob,
+            'email' => $request->email,
+            'phoneno' => $request->phone,
+            'address' => $request->address,
+            'lga_id' => $request->lga,
+            'state_id' => $request->state,
+            'joe_number' => $joe,
+        ]);
+
+        if($patient){
+            Session::flash('status','Patient registered');
+            return back();
+        }else{
+            Session::flash('error','Error registering patient');
+            return back();
+        }
     }
 
     /**
