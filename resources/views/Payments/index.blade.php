@@ -22,7 +22,6 @@
                     <th>Receipt No</th>
                     <th>Updated By</th>
                     <th>Document paid for</th>
-                    <th>Patient name</th>
                     <th>Date Updated</th>
                     <th>Action</th>
                   </tr>
@@ -30,14 +29,13 @@
                 <tbody>
                     @foreach($payments as $payment)
                     <tr>
-                        <td><a href="{{route('viewpatient',$patient->id)}}">{{$payment->firstname}} </a></td>
+                        <td>{{$payment->transaction_id}} </td>
                         <td>{{$payment->amount}}</td>
                         <td>{{$payment->receipt_no}}</td>
                         <td>{{$payment->user->name}}</td>
-                        <td>{{$payment->request->documend->name}}</td>
-                        <td>{{$payment->request->patient->firstname}} {{$patient->request->patient->lastname}}</td>
+                        <td>{{$payment->request->document->name}}</td>
                         <td>{{$payment->created_at->format('d M Y h:i:a')}}</td>
-                        <td><a class="btn btn-primary" href="{{route('viewpatient',$patient->id)}}">View</a></td>
+                        <td><a class="btn btn-primary" href="{{route('viewpayment',$payment->id)}}">View</a></td>
                     </tr>
                   @endforeach
                 </tbody>

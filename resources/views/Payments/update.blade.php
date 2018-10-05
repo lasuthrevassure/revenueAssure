@@ -43,9 +43,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="control-label col-md-3">Patient Joe No</label>
+                            <label class="control-label col-md-3">Patient Reg No</label>
                             <div class="col-md-8">
-                                <input class="form-control col-md-8" name="patient_joe_number" type="text" value="{{$request->patient->joe_number}}">
+                                <input class="form-control col-md-8" name="patient_joe_number" type="text" value="{{$request->patient->registration_no}}">
                             </div>
                         </div>
                         

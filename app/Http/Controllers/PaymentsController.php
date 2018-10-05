@@ -57,6 +57,7 @@ class PaymentsController extends Controller
         ]);
 
         if($payment){
+            PatientRequest::where('id',$id)->update(['status' => '1']);
             session()->flash('status','payment updated !');
             return redirect('payments/requests');
         }
@@ -68,9 +69,10 @@ class PaymentsController extends Controller
      * @param  \App\Payments  $payments
      * @return \Illuminate\Http\Response
      */
-    public function show(Payments $payments)
+    public function show($id)
     {
-        //
+        $payment = Payments::findOrFail($id);
+        return view('Payments.show',compact('payment'));
     }
 
     /**
