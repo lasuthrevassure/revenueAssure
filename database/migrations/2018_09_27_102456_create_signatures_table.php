@@ -21,6 +21,7 @@ class CreateSignaturesTable extends Migration
             $table->string('owner_phone', 14);
             $table->string('owner_email', 100);
             $table->string('owner_role', 100);
+            $table->string('signature', 100);
             $table->timestamps();
         });
     }

@@ -1,26 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
+    @yield('head')
     @include('partials.head')
   </head>
-  <body class="app sidebar-mini rtl">
-    <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="index.html">Revenue Assurance</a>
-      @include('partials.topbar')
-      @include('partials.notification')
-    </header>
-    <!-- Sidebar menu-->
-    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
-    <aside class="app-sidebar">
-        @include('partials.sidebar')
-    </aside>
-    <main class="app-content">
-      <div class="app-title">
-        @yield('title')
+  <body class="h-100">
+      <div class="container-fluid">
+        <div class="row">
+            <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+              @include('partials.sidebar')
+            </aside>
+            <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+              <div class="main-navbar stickty-top bg-white">
+                @include('partials.topbar')
+              </div>
+
+              <!-- body -->
+              @yield('content')
+              
+            </main>
+        </div>
+      
+
       </div>
-        @yield('content')
-    </main>
+
+
     @include('partials.script')
     @yield('script')
+    @include('partials.notification')
   </body>
 </html>

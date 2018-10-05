@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Payments;
+use App\PatientRequest;
 use Illuminate\Http\Request;
+use Auth;
 
 class PaymentsController extends Controller
 {
@@ -14,7 +16,8 @@ class PaymentsController extends Controller
      */
     public function index()
     {
-        //
+        $payments = Payments::all();
+        return view('Payments.index',compact('payments'));
     }
 
     /**
@@ -22,9 +25,17 @@ class PaymentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+
+    public function payemntRequests()
     {
-        //
+        $requests = PatientRequest::where('status','0')->get();
+        return view('Payments.requests',compact('requests'));
+    }
+
+    public function create($id)
+    {
+        $request = PatientRequest::findOrFail($id);
+        return view('Payments.update',compact('request'));
     }
 
     /**
@@ -33,9 +44,22 @@ class PaymentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $payment = Payments::create([
+            'request_id' => $id,
+            'user_id' => Auth::id(),
+            'transaction_id' => $request->transaction_id,
+            'receipt_no' => $request->receipt_no,
+            'bill_reference' => $request->bill_reference,
+            'amount' => $request->amount
+
+        ]);
+
+        if($payment){
+            session()->flash('status','payment updated !');
+            return redirect('payments/requests');
+        }
     }
 
     /**

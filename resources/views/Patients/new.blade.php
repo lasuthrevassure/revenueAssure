@@ -1,117 +1,165 @@
 @extends('layouts.master')
-@section('title')
-    <div>
-        <h1><i class="fa fa-edit"></i> Patients</h1>
-    </div>
-    <ul class="app-breadcrumb breadcrumb">
-        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-        <li class="breadcrumb-item">Patients</li>
-        <li class="breadcrumb-item"><a href="#">add</a></li>
-    </ul>
-@stop
 @section('content')
-    <div class="row">
-        <div class="col-md-6">
-            <div class="tile">
-            <h3 class="tile-title">Create Patient</h3>
-            <div class="tile-body">
-                <form class="form-horizontal" action="{{route('storepatient')}}" method="post">
-                    @csrf
-                    <div class="form-group row">
-                        <label class="control-label col-md-3">Title</label>
-                        <div class="col-md-8">
-                            <select class="form-control col-md-8" name="title" id=""> 
-                                <option value="">select title</option>
-                                <option value="Mr">Mr</option>
-                                <option value="Ms">Ms</option>
-                                <option value="Miss">Miss</option>
-                                <option value="Mrs">Mrs</option>
-                            </select>
+<div class="container pt-3 reg mb-5">
+    <img src="{{asset('assets/image/clipboard.svg')}}" class="clipboard pr-4 pb-3"><span>Registration</span>
+    <div class="bg-white pt-3 balance">
+        <form action="{{route('storepatient')}}" method="post">
+            @csrf
+            <div class="row pt-4">
+                <div class="col-md-3 labelname">
+                    <p class="text-right">Enter full name</p>
+                    <p class="text-right difcolor">Full name of patient</p>
+                </div>
+                <div class="col-md-6 labelform">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">First Name</label>
+                            <input type="text" class="form-control" name="firstname"  id="firstname" placeholder="John" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Last Name</label>
+                            <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Doe" required>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="control-label col-md-3">Fistname</label>
-                        <div class="col-md-8">
-                            <input class="form-control col-md-8" type="text" name="firstname" placeholder="Enter firstname">
+                </div>
+                <div class="col-md-3">
+
+                </div>
+
+                <!--  -->
+
+                <div class="col-md-3 labelname">
+                    <p class="text-right">Email Address</p>
+                    <p class="text-right difcolor">Enter email id of patient</p>
+                </div>
+                <div class="col-md-6 labelform">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputEmail4">Email Address</label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="john.doe@gmail.com">
                         </div>
+                                    
                     </div>
-                    <div class="form-group row">
-                        <label class="control-label col-md-3">Lastname</label>
-                        <div class="col-md-8">
-                            <input class="form-control col-md-8" type="text" name="lastname" placeholder="Enter lastname">
+                </div>
+                <div class="col-md-3">
+                    
+                </div>
+
+                <!--  -->
+
+                <div class="col-md-3 labelname">
+                    <p class="text-right">Phone Number</p>
+                    <p class="text-right difcolor">Enter phone number of patient</p>
+                </div>
+                <div class="col-md-6 labelform">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputEmail4">Phone Number</label>
+                            <input type="tel" name="phone" class="form-control" id="phone" placeholder="+234 000 000 0000" required>
                         </div>
+                                    
                     </div>
-                    <div class="form-group row">
-                        <label class="control-label col-md-3">Email</label>
-                        <div class="col-md-8">
-                            <input class="form-control col-md-8" name="email" type="email" placeholder="Enter email address">
+                </div>
+                <div class="col-md-3">
+                    
+                </div>
+
+                <!--  -->
+
+                <div class="col-md-3 labelname">
+                    <p class="text-right">Residental Address</p>
+                    <p class="text-right difcolor">Where does patient stay?</p>
+                </div>
+                <div class="col-md-6 labelform">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputEmail4">Home Address</label>
+                            <input type="address" class="form-control" name="address" id="address" placeholder="Enter home address here" required>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="control-label col-md-3">Phone Number</label>
-                        <div class="col-md-8">
-                            <input class="form-control col-md-8" name="phone" type="text" placeholder="+234">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="control-label col-md-3">Date of birth</label>
-                        <div class="col-md-8">
-                            <input class="form-control col-md-8" name="dob" type="date" placeholder="Enter date of birth">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="control-label col-md-3">Address</label>
-                        <div class="col-md-8">
-                            <textarea class="form-control col-md-8" rows="4" name="address" placeholder="Enter address"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="control-label col-md-3">State</label>
-                        <div class="col-md-8">
-                            <select class="form-control col-md-8" name="state" id="state"> 
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">State</label>
+                            <select class="form-control" name="state" id="state" required> 
                                 <option value="">select state</option>
                                 @foreach($states as $state)
                                     <option value="{{$state->state_id}}">{{$state->name}}</option>
                                 @endforeach
                             </select>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="control-label col-md-3">Local government</label>
-                        <div class="col-md-8">
-                            <select class="form-control col-md-8" name="lga" id="lga">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">LGA</label>
+                            <select class="form-control" name="lga" id="lga" required>
                                 <option value="">select LGA</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="control-label col-md-3">Gender</label>
-                        <div class="col-md-9">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                            <input class="form-check-input" name="gender" value="Male" type="radio" name="gender">Male
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                            <input class="form-check-input" name="gender" value="Female" type="radio" name="gender">Female
-                            </label>
-                        </div>
-                        </div>
-                    </div>
-                
-            </div>
-                <div class="tile-footer">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-3">
-                            <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Create</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="{{route('patient')}}"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
-                        </div>
+                                    
                     </div>
                 </div>
+                <div class="col-md-3">
+                    
+                </div>
+                <!--  -->
+                <div class="col-md-3 labelname">
+                    <p class="text-right">Gender</p>
+                    <p class="text-right difcolor">What is the Sex of the patient?</p>
+                </div>
+                <div class="col-md-6 labelform">
+                    <div class="form-row">
+                            
+                        <div class="form-group col-md-6">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" value="Male" id="inlineRadio1" required>
+                                <label class="form-check-label" for="inlineRadio1">Female</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" value="Female" id="inlineRadio1" required>
+                                <label class="form-check-label" for="inlineRadio1">Male</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6"></div>
+                                    
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    
+                </div>
+                <!--  -->
+                <div class="col-md-3 labelname">
+                    <p class="text-right">Date of Birth</p>
+                    <p class="text-right difcolor">Day month and year of birth</p>
+                </div>
+                <div class="col-md-6 labelform">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="demoDate">Date of Birth</label>
+                            <input class="form-control"  name="dob" id="demoDate" type="text" placeholder="Select Date" required>
+                        </div>
+                                    
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    
+                </div>
+                <!--  -->
+                <div class="col-md-3 labelname">
+                    <!-- leaveempty -->
+                </div>
+                <div class="col-md-6 labelform">
+                        
+                    <button type="submit" class="float-right my-4">REGISTER</button>
+                                        
+                        
+                </div>
+                <div class="col-md-3">
+                    <!-- leave empty -->
+                </div>
+                <!--  -->
+                                            
             </div>
-            </form>
-        </div>
+        </form>
     </div>
+</div>
+                      
+<!-- bodycontentend -->
 @stop
 
 @section('script')
@@ -140,6 +188,12 @@
             }
         })
     });
+
+    $('#demoDate').datepicker({
+      	format: "yyyy-mm-dd",
+      	autoclose: true,
+      	todayHighlight: true
+      });
 
 </script>
 

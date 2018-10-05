@@ -1,45 +1,130 @@
-      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
-        <div>
-          <p class="app-sidebar__user-name">{{Auth::user()->name}}</p>
-          <p class="app-sidebar__user-designation">Record</p>
+
+  <div class="main-navbar">
+    <nav class="navbar navbar-light bg-white flex-md-nowrap align-items-stretch">
+      <a href="" class="nav-brand w-100">
+          <div class="d-table m-auto">
+              <p>LRA</p>
+          </div>
+      </a>
+      <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
+        <i class="material-icons">&#xE5C4;</i>
+      </a>
+    </nav>
+  </div>
+
+  <div class="nav-wrapper">
+    <ul class="nav flex-column">
+      <li class="nav-item mt-5 mb-2">
+        <a class="nav-link dash" href="{{route('home')}}">
+          <img src="{{asset('assets/image/dashboard.svg')}}" class="pr-2">
+          <span>Dashboard</span>
+        </a>
+        <!-- 1 -->
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link request" href="{{route('requests')}}">
+          <img src="{{asset('assets/image/records.svg')}}" class="pr-2">        
+          <span>Requests</span>
+        </a>
+        <!-- 2 -->
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link pat" data-toggle="collapse" href="#patient" aria-expanded="false" aria-controls="patient">
+          <img src="{{asset('assets/image/twotone-how-to-reg-24-px.svg')}}" class="pr-2">
+          <span>Patients Management</span>
+        </a>
+
+        <div class="collapse" id="patient">
+          <ul class="nav flex-column ">
+            <li class="nav-item">
+              <a class="nav-link search" href="{{route('searchpatient')}}">Search patient</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link patients" href="{{route('patient')}}">Patients</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link addpat" href="{{route('addpatient')}}">New Patient</a>
+            </li>
+          </ul>
         </div>
-      </div>
-      <ul class="app-menu">
-        <li><a class="app-menu__item dash" href="{{url('/')}}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
-        
-        <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Requests</span></a></li>
+        <!-- 3 -->
+      </li>
+      
+      <li class="nav-item mb-2">
+        <a class="nav-link paymentmana" data-toggle="collapse" href="#payment" aria-expanded="false" aria-controls="payment">
+          <img src="{{asset('assets/image/payment.svg')}}" class="pr-2">
+          <span>Payment Management</span>
+        </a>
 
-        <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Payments</span></a></li>
-
-        <li class="treeview pat"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Patients</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item search" href="{{route('searchpatient')}}"><i class="icon fa fa-circle-o"></i> Search Patients</a></li>
-            <li><a class="treeview-item addpat" href="{{route('patient')}}"><i class="icon fa fa-circle-o"></i> Patients</a></li>
-            <li><a class="treeview-item addpat" href="{{route('addpatient')}}"><i class="icon fa fa-circle-o"></i> New Patient</a></li>
+        <div class="collapse" id="payment">
+          <ul class="nav flex-column ">
+            <li class="nav-item">
+              <a class="nav-link paymentRequest" href="{{route('paymentrequests')}}">Payment Requests</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link payments" href="{{route('payments')}}">Payments</a>
+            </li>
           </ul>
-        </li>
+        </div>
+        <!-- 4 -->
+      </li>
 
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Signature </span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="blank-page.html"><i class="icon fa fa-circle-o"></i> Signatures</a></li>
-            <li><a class="treeview-item" href="page-login.html"><i class="icon fa fa-circle-o"></i> Add Signature</a></li>
-          </ul>
-        </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link user" data-toggle="collapse" href="#user" aria-expanded="false" aria-controls="user">
+          <img src="{{asset('assets/image/user.svg')}}" class="pr-2">
+          <span>User Management</span>
+        </a>
 
-        <li class="treeview user"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">User Managemnt</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item alluser" href="form-components.html"><i class="icon fa fa-circle-o"></i> Users</a></li>
-            <li><a class="treeview-item aduser" href="form-custom.html"><i class="icon fa fa-circle-o"></i> Add User</a></li>
-            <li><a class="treeview-item allroles" href="form-samples.html"><i class="icon fa fa-circle-o"></i> Roles</a></li>
-            <li><a class="treeview-item adroles" href="form-notifications.html"><i class="icon fa fa-circle-o"></i> Add Role</a></li>
+        <div class="collapse" id="user">
+          <ul class="nav flex-column ">
+            <li class="nav-item">
+              <a class="nav-link alluser" href="{{route('users')}}">Users</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link aduser" href="{{route('register')}}">Add User</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link adroles" href="{{route('addrole')}}">Add Role</a>
+            </li>
           </ul>
-        </li>
-        
+        </div>
+        <!-- 5 -->
+      </li>
 
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Ticket System</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="blank-page.html"><i class="icon fa fa-circle-o"></i> Ticket</a></li>
-            <li><a class="treeview-item" href="page-login.html"><i class="icon fa fa-circle-o"></i> Raise a Ticket</a></li>
+      <li class="nav-item mb-2">
+        <a class="nav-link" data-toggle="collapse" href="#signature" aria-expanded="false" aria-controls="signature">
+          <img src="{{asset('assets/image/twotone-create-24-px.svg')}}" class="pr-2">
+          <span>E-signatures</span>
+        </a>
+
+        <div class="collapse" id="signature">
+          <ul class="nav flex-column ">
+            <li class="nav-item">
+              <a class="nav-link" href="pages/ui-features/buttons.html">Signatures</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/ui-features/typography.html">Add Signature</a>
+            </li>
           </ul>
-        </li>
-      </ul>
+        </div>
+        <!-- 6 -->
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link" data-toggle="collapse" href="#support" aria-expanded="false" aria-controls="support">
+          <img src="{{asset('assets/image/settings.svg')}}" class="pr-2">
+          <span>Support System</span>
+        </a>
+        <div class="collapse" id="support">
+          <ul class="nav flex-column ">
+            <li class="nav-item">
+              <a class="nav-link" href="pages/ui-features/buttons.html">Signatures</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/ui-features/typography.html">Add Signature</a>
+            </li>
+          </ul>
+        </div>
+        <!-- 7 -->
+      </li>
+    </ul>
+  </div>

@@ -18,6 +18,7 @@ class CreateRequestsTable extends Migration
             $table->integer('user_id');
             $table->integer('patient_id');
             $table->integer('document_id');
+            $table->integer('status')->default('0');
             $table->timestamps();
             $table->softDeletes();
         });

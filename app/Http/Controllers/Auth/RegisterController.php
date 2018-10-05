@@ -7,6 +7,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Ultraware\Roles\Models\Role;
+use Ultraware\Roles\Models\Permission;
+use URL;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -28,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/users';
 
     /**
      * Create a new controller instance.
@@ -37,8 +42,15 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
+
+    public function index()
+    {
+        $users = User::all();
+        return view('Users.index',compact('users'));
+    }
+
 
     /**
      * Get a validator for an incoming registration request.
@@ -51,7 +63,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'phone' => 'required|string|min:14',
         ]);
     }
 
@@ -63,10 +75,95 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $length = 8;
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
+        $password = substr( str_shuffle( $chars ), 0, $length );
+
+        $roles =  $data['role'];
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'phone' => $data['phone'],
+            'password' => Hash::make($password),
         ]);
+
+
+        $user->syncRoles($roles);
+
+        $data = [
+            'email' => $user->email,
+            'name' => $user->name,
+            'password' => $password,
+            'url' => URL::route('home')
+        ];
+         
+        Mail::to($user->email)->send(new \App\Mail\UserRegistration($data));
+
+        session()->flash('status','User created successfully');
+
+        return redirect('users');
+    }
+
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        $roles = Role::all();
+        return view('Users.user',compact('user','roles'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $role = $request['role'];
+        $password = Hash::make($request->password);
+
+        User::where('id', $id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => $password
+        ]);
+        
+        $user = User::where('email',$request->email)->first();
+        
+        if ($role){
+            if(count($user->roles) > 1)
+            {
+                $user->detachAllRoles();
+            }else{
+                $user->detachRole($user->roles);
+            }
+            
+            $user->syncRoles($role);
+        }
+
+        $request->session()->flash('status', 'User details updated');
+
+        return redirect()->back();
+    }
+
+
+    public function createrole()
+    {
+        $priviledges = Permission::all();
+        return view('Users.createrole',compact('priviledges'));
+    }
+
+
+    public function storerole(Request $request)
+    {
+        $role = Role::create([
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'description' => $request->description,
+        ]);
+
+            if($role){
+                $role->syncPermissions($request->permissions);
+                session()->flash('status', 'role created');
+                return back();
+            }
     }
 }

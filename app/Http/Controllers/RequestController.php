@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Request;
+use App\PatientRequest;
 use Illuminate\Http\Request;
+use Auth;
 
 class RequestController extends Controller
 {
@@ -14,7 +15,8 @@ class RequestController extends Controller
      */
     public function index()
     {
-        //
+        $patientrequests = PatientRequest::all();
+        return view('Requests.index',compact('patientrequests'));
     }
 
     /**
@@ -35,7 +37,17 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $patientrequest = PatientRequest::create([
+            'user_id' => Auth::id(),
+            'patient_id' => $request->patient_id,
+            'document_id' => $request->document
+        ]);
+        
+        if($patientrequest){
+            session()->flash('status','Patient request made !');
+            return back();
+        }
+
     }
 
     /**
@@ -44,9 +56,10 @@ class RequestController extends Controller
      * @param  \App\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show($id)
     {
-        //
+        $patientrequest = PatientRequest::findOrFail($id);
+        return view('Requests.show',compact('patientrequest'));
     }
 
     /**
@@ -55,7 +68,7 @@ class RequestController extends Controller
      * @param  \App\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(PatientRequest $patientrequest)
     {
         //
     }
@@ -67,7 +80,7 @@ class RequestController extends Controller
      * @param  \App\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Request $request)
+    public function update(Request $request)
     {
         //
     }
