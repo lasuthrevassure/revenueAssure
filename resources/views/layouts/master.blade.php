@@ -16,11 +16,12 @@
               </div>
 
               <!-- body -->
+
               @yield('content')
-              
+
             </main>
         </div>
-      
+
 
       </div>
 

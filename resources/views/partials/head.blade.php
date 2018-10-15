@@ -10,5 +10,5 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/toastr/toastr.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('assets/css/datetime.css')}}" type="text/css">
+      <link rel="stylesheet" href="{{asset('/css/laraform.css')}}" type="text/css">
     <title>Revenue Assurance</title>
-    

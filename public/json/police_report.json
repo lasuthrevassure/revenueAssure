@@ -1,0 +1,64 @@
+{
+    "fields": {
+        "police_ref": {
+            "label": "Police Ref",
+            "type": "text",
+            "span": "left"
+        },
+        "hospital_ref": {
+            "label": "Hospital Ref",
+            "type": "text",
+            "span": "right"
+        },
+        "medical_ref": {
+            "label": "Medical Practitioner Hospital",
+            "type": "text",
+            "span": "full"
+        },
+        "signed_date": {
+            "label": "Signed Date",
+            "type": "text",
+            "span": "full"
+        },
+        "police": {
+            "label": "police",
+            "type": "text",
+            "span": "full"
+        },
+        "title": {
+            "label": "title",
+            "type": "text",
+            "span": "full"
+        },
+        "firstname": {
+            "label": "firstname",
+            "type": "text",
+            "span": "left"
+        },
+        "lastname": {
+            "label": "lastname",
+            "type": "text",
+            "span": "right"
+        },
+        "report_date": {
+            "label": "Report Date",
+            "type": "text",
+            "span": "full"
+        },
+        "gender": {
+            "label": "gender",
+            "type": "text",
+            "span": "left"
+        },
+        "complaint": {
+            "label": "complaint",
+            "type": "text",
+            "span": "full"
+        },
+        "medical_statement": {
+            "label": "Medical Statement",
+            "type": "text",
+            "span": "full"
+        }
+    }
+}

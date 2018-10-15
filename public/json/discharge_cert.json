@@ -1,0 +1,34 @@
+{
+    "fields": {
+        "title": {
+            "label": "title",
+            "type": "text",
+            "span": "full"
+        },
+        "firstname": {
+            "label": "firstname",
+            "type": "text",
+            "span": "left"
+        },
+        "lastname": {
+            "label": "lastname",
+            "type": "text",
+            "span": "right"
+        },
+        "date_of_discharge": {
+            "label": "Date of discharge",
+            "type": "text",
+            "span": "left"
+        },
+        "address": {
+            "label": "Address",
+            "type": "text",
+            "span": "right"
+        },
+        "to_department": {
+            "label": "To the Head of the ",
+            "type": "text",
+            "span": "full"
+        }
+    }
+}

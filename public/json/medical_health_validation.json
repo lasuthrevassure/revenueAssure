@@ -1,0 +1,19 @@
+{
+  "temperature": "required",
+  "ecg": "required",
+  "hepatatitis": "required",
+  "fbs": "required",
+  "hiv": "required",
+  "stool": "required",
+  "blood_pressure": "required",
+  "urinalysis": "required",
+  "genotype": "required",
+  "blood_group": "required",
+  "pvg": "required",
+  "ecg": "required",
+  "stool": "required",
+  "urinalysis": "required",
+  "anemia": "required",
+  "ent": "required",
+  "party_time": "required"
+}

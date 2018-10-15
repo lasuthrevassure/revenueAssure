@@ -1,0 +1,15 @@
+{
+  "firstname": "required",
+  "lastname": "required",
+  "residential_address": "required",
+  "age": "required",
+  "last_seen_date": "required",
+  "gender": "required",
+  "suffering_from": "required",
+  "death_date": "required",
+  "death_time": "required",
+  "primary_cause": "required",
+  "secondary_cause": "required",
+  "disease_time": "required",
+  "witness_date": "required"
+}

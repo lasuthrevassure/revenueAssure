@@ -28,14 +28,25 @@ Route::get('/patient/search', 'PatientsController@searchPatient')->name('searchp
 Route::post('/patient/search', 'PatientsController@searchPatient')->name('searchpatientfilter');
 Route::get('/search','PatientsController@search');
 Route::get('/patient/view/{id}','PatientsController@show')->name('viewpatient');
+Route::post('/patient/update','PatientsController@update')->name('updatepatient');
 
 // request module
 Route::get('/requests', 'RequestController@index')->name('requests');
+Route::post('/requests', 'RequestController@index')->name('requestfilter');
 Route::post('/request/add', 'RequestController@store')->name('storerequest');
+Route::get('request/generate/{patientRequest}/report/{document}','PDFGeneratorController@showForm')->name('showForm');
+Route::post('request/store/{patientRequest}/report/{document}','PDFGeneratorController@storeForm')->name('storeForm');
+Route::get('request/preview/{documentRequest}','PDFGeneratorController@previewForm')->name('previewForm');
+Route::get('docrequest/{documentRequest}','PDFGeneratorController@indexForm')->name('indexForm');
+Route::get('emailrequest/{documentRequest}','PDFGeneratorController@emailForm')->name('emailForm');
+
 Route::get('request/view/{id}','RequestController@show')->name('viewrequest');
+Route::post('request/view','RequestController@update')->name('updaterequest');
+Route::post('request/delete','RequestController@destroy')->name('deleterequest');
 
 //user module
 Route::get('/users', 'Auth\RegisterController@index')->name('users');
+Route::post('/users', 'Auth\RegisterController@index')->name('userfilter');
 Route::get('/users/user/{id}', 'Auth\RegisterController@edit')->name('user');
 Route::post('/users/user/{id}', 'Auth\RegisterController@update')->name('user');
 Route::get('/role/add', 'Auth\RegisterController@createrole')->name('addrole');
@@ -43,7 +54,14 @@ Route::post('/role/add', 'Auth\RegisterController@storerole')->name('addrole');
 
 //payment module
 Route::get('/payments', 'PaymentsController@index')->name('payments');
+Route::post('/payments', 'PaymentsController@index')->name('paymentfilter');
 Route::get('/payments/requests', 'PaymentsController@payemntRequests')->name('paymentrequests');
+Route::post('/payments/requests', 'PaymentsController@payemntRequests')->name('paymentrequestfilter');
 Route::get('/payments/update/{id}', 'PaymentsController@create')->name('createpayment');
-Route::post('/payments/update/{id}', 'PaymentsController@store')->name('createpayment');
+Route::post('/payments/update', 'PaymentsController@store')->name('createpayment');
 Route::get('/payments/view/{id}', 'PaymentsController@show')->name('viewpayment');
+
+//reports and certificate module
+// Route::get('/document/form/{document}', 'PDFGeneratorController@showForm')->name('showForm');
+// Route::post('/document/form/{document}', 'PDFGeneratorController@indexForm')->name('indexForm');
+Route::get('/document/index', 'PDFGeneratorController@index')->name('documentIndex');

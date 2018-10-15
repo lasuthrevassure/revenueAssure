@@ -16,4 +16,14 @@ class Patients extends Model
     {
         return $this->hasMany('App\PatientRequest');
     }
+
+    public function patstate()
+    {
+        return $this->belongsTo('App\States','id','state_id');
+    }
+
+    public function lga()
+    {
+        return $this->belongsTo('App\Locals','lga_id','local_id');
+    }
 }

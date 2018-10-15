@@ -2,6 +2,15 @@
 @section('content')
 <div class="container pt-3 reg mb-5">
     <img src="{{asset('assets/image/clipboard.svg')}}" class="clipboard pr-4 pb-3"><span>Registration</span>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div class="bg-white pt-3 balance">
         <form action="{{route('storepatient')}}" method="post">
             @csrf
@@ -14,11 +23,21 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">First Name</label>
-                            <input type="text" class="form-control" name="firstname"  id="firstname" placeholder="John" required>
+                            <input type="text" class="form-control" name="firstname"  id="firstname" placeholder="John" required autofocus>
+                            @if ($errors->has('firstname'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('firstname') }}</strong>
+                                </span>
+                            @endif
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">Last Name</label>
                             <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Doe" required>
+                            @if ($errors->has('lastname'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('lastname') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -37,6 +56,11 @@
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Email Address</label>
                             <input type="email" name="email" class="form-control" id="email" placeholder="john.doe@gmail.com">
+                            @if ($errors->has('email'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
                         </div>
                                     
                     </div>
@@ -56,6 +80,11 @@
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Phone Number</label>
                             <input type="tel" name="phone" class="form-control" id="phone" placeholder="+234 000 000 0000" required>
+                            @if ($errors->has('phone'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('phone') }}</strong>
+                                </span>
+                            @endif
                         </div>
                                     
                     </div>
@@ -75,6 +104,11 @@
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Home Address</label>
                             <input type="address" class="form-control" name="address" id="address" placeholder="Enter home address here" required>
+                            @if ($errors->has('address'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('address') }}</strong>
+                                </span>
+                            @endif
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">State</label>
@@ -132,6 +166,11 @@
                         <div class="form-group col-md-12">
                             <label for="demoDate">Date of Birth</label>
                             <input class="form-control"  name="dob" id="demoDate" type="text" placeholder="Select Date" required>
+                            @if ($errors->has('dob'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('dob') }}</strong>
+                                </span>
+                            @endif
                         </div>
                                     
                     </div>

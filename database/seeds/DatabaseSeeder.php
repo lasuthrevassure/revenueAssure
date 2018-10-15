@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(SignatureTableSeeder::class);
         Model::unguard();
          //$this->call(PermissionSeeder::class);
         Model::reguard();

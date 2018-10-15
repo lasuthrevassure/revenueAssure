@@ -5,12 +5,14 @@ $customtextcolor:#45d88e;
 $textcolor:#434343;
 $whitecolor:#fff;
 $bigfont:36px;
-$midfont:17px;
+$midfont:16px;
 $h5font:20px;
 $textcolor:#45526b;
 $smallfont:13px;
 $placecolor:#d8d8d8;
+$trashcolor:#ed5d5d;
 $navbarcolor:#515f8a;
+
 
 //bodystyle
 body{
@@ -38,6 +40,9 @@ h6{
     letter-spacing: normal;
     color: #434343;
   
+  }
+  h4{
+      font-size:$midfont;
   }
 label{
     font-size: 13px;
@@ -365,11 +370,15 @@ label{
     }
 }
 
+.header{
+    margin-top:43px;
+    
+}
  .content1{
 
     padding:20px;
      color:$textcolor;
-    margin-top:30px;
+    margin-top: 21px;
      label{
          
          font-size:14px;
@@ -402,6 +411,12 @@ label{
         border: solid 1px #ebebf2;
     }
     
+    input.datefade{
+        color: #d8d8d8;
+        font-size: 14px;
+        
+    }
+    
 
     .editt{
         
@@ -423,14 +438,15 @@ label{
          text-decoration: underline;
          color:$customtextcolor;
      }
-       select{
+       input{
         font-size: 13px;
-        height: 48px;
+        height: 54px;
         border-radius: 3px;
         background-color: #fdfdfd;
        }
    ::placeholder{
       font-size: 13px;
+      opacity:0.5;
    }
      table{
          font-size: 14px;
@@ -451,6 +467,11 @@ label{
         font-size: 13px;
     }
      .modal{
+
+        .modal-content{
+            box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.5);
+        }
+        
          .modal-title{
             color:$textcolor;
              font-size: 14px;
@@ -459,6 +480,7 @@ label{
             
             background-color: #f5f5f5;
          }
+       
 
          .modal-footer{
             background-color: #f5f5f5;
@@ -466,8 +488,7 @@ label{
 
          .btncan{
             
-            background-color: #f5f5f5;
-           
+            background-color: #f5f5f5;    
             height: 49px;
            
 
@@ -486,11 +507,67 @@ label{
     p.size2{
         font-size: 12px;
     }
-}
-.pag{
 
+   
+      
+         
+    .pend{
+        a{
+            color:$textcolor;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        a.btn-pend{    
+            max-width: 90px;
+            height: 28px;
+            border-radius: 14px;
+  background-color: rgba(237, 93, 93, 0.3);
+        }
+    }
+        
+    .paid{
+        a{
+            color:$textcolor;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        a.btn-paid{    
+            width: 90px;
+            height: 28px;
+            border-radius: 14px;
+            background-color: rgba(69, 216, 142, 0.3);
+        }
+    }
+    
+    .action{
+        a{
+            color:$textcolor;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        
+        .fa-trash{
+            color:$trashcolor;
+            padding-right: 8px;
+        }
+        .fa-eye{
+            color:$customtextcolor;
+            padding-right: 8px;
+        }
+    }
+   
+}
+
+
+
+.pag{
+    p{
+        font-size: 14px;
+    }
     a{
         color:$customtextcolor;
+        font-size: 14px;
     }
     
    .active{
@@ -502,7 +579,10 @@ label{
        }
    }
    .page-link{
-    margin-left:5px !important;
+    width: 40px;
+    height: 40px;
+    margin-left:4px;
+    
    }
 }
         
@@ -554,3 +634,49 @@ select{
     }
 }
 
+.wrapper{
+
+    max-width: 655px;
+
+    .card{
+        border: solid 1px #e0e2e5;
+    }
+    th{
+        padding:20px 20px 20px 20px;
+        font-size: 12px;
+     }
+     td{
+         padding:20px 20px 20px 20px;
+         font-size: 15px;
+     }
+    a.colorr{
+
+        color:$customtextcolor;
+    }
+    
+    .table td, .table th {
+        
+        border-top:0px;
+        vertical-align: top;
+        border-bottom: 1px solid #dee2e6;
+    }
+    .dot{
+        width: 10px;
+        height: 10px;
+        background-color: #45d88e;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .generate{
+        background-color: #45d88e;
+        font-size: 13px;
+        font-weight: 600;
+        height: 49px;
+    }
+
+    .savebtn{
+        font-size: 13px;
+  font-weight: 600;
+    }
+}

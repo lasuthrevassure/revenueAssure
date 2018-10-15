@@ -100,7 +100,7 @@ class PatientsController extends Controller
     public function searchPatient(Request $request)
     {
         $documents = Documents::all();
-        $patients = [];
+        $patients = Patients::paginate(10);
         $error_resp = '0';
         $fullname = $request->fullname;
         $regno = $request->reg_no;
@@ -110,7 +110,7 @@ class PatientsController extends Controller
         
         if (!is_null($fullname) ) 
         {  
-            $patients = Patients::whereIn('firstname', $names)->whereIn('lastname', $names)->get();
+            $patients = Patients::whereIn('firstname', $names)->whereIn('lastname', $names)->paginate(10);
             if(count($patients) == 0 ){
                 $error_resp = '1';
             }
@@ -118,7 +118,7 @@ class PatientsController extends Controller
 
         if( !is_null($regno) )
         {
-            $patients = Patients::where('registration_no', $regno)->get();
+            $patients = Patients::where('registration_no', $regno)->paginate(10);
 
             if(count($patients) == 0 ){
                 $error_resp = '1';
@@ -128,7 +128,7 @@ class PatientsController extends Controller
         
         if( !is_null($dob) )
         { 
-            $patients = Patients::where('dob', $dob)->get();
+            $patients = Patients::where('dob', $dob)->paginate(10);
 
             if(count($patients) == 0 ){
                 $error_resp = '1';
@@ -140,7 +140,7 @@ class PatientsController extends Controller
             $patients = Patients::where([
                 ['registration_no', $regno],
                 ['dob', $dob]
-            ])->whereIn('firstname', $names)->whereIn('lastname', $names)->get();
+            ])->whereIn('firstname', $names)->whereIn('lastname', $names)->paginate(10);
 
             if(count($patients) == 0 ){
                 $error_resp = '1';
@@ -152,7 +152,7 @@ class PatientsController extends Controller
             $patients = Patients::where([
                 ['registration_no', $regno],
                 ['dob', $dob]
-            ])->get();
+            ])->paginate(10);
 
             if(count($patients) == 0 ){
                 $error_resp = '1';
@@ -161,7 +161,7 @@ class PatientsController extends Controller
 
         if( !is_null($fullname) &&  !is_null($regno) )
         {
-            $patients = Patients::where('registration_no', $regno)->whereIn('firstname', $names)->whereIn('lastname', $names)->get();
+            $patients = Patients::where('registration_no', $regno)->whereIn('firstname', $names)->whereIn('lastname', $names)->paginate(10);
 
             if(count($patients) == 0 ){
                 $error_resp = '1';
@@ -170,7 +170,7 @@ class PatientsController extends Controller
 
         if( !is_null($fullname) &&  !is_null($dob) )
         {
-            $patients = Patients::where('dob', $dob)->whereIn('firstname', $names)->whereIn('lastname', $names)->get();
+            $patients = Patients::where('dob', $dob)->whereIn('firstname', $names)->whereIn('lastname', $names)->paginate(10);
             
             if(count($patients) == 0 ){
                 $error_resp = '1';
@@ -225,7 +225,7 @@ class PatientsController extends Controller
             {
                 $no_res = '
                     <div class="row justify-content-center" style="height:30vh;"> 
-                        <img src="'.url('assets/image/thought.svg').'" class="thought">
+                        <img src="'.url('assets/image/empty.svg').'" class="thought">
                     </div>
                     <p class="text-center pt-5 size">No Record Found</p>
                     <p class="text-center pb-5 size2">Try changing the filter or search term  or <span><a href="'.route('addpatient').'">Register Patient</a> </span></p>
@@ -245,7 +245,8 @@ class PatientsController extends Controller
  
     }
 
-    public function fetchlga($id){
+    public function fetchlga($id)
+    {
         $lga = Locals::where('state_id',$id)->get();
         if($lga){
             return response()->json($lga);
@@ -276,6 +277,15 @@ class PatientsController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'nullable|email|unique:patients',
+            'phone' => 'required|max:14',
+            'address' => 'required',
+            'dob' => 'required',
+        ]);
+
         $patient = Patients::create([
             'title' => $request->title,
             'firstname' => $request->firstname,
@@ -295,7 +305,7 @@ class PatientsController extends Controller
 
             Patients::where('id',$patient->id)->update(['registration_no' => $joe]);
 
-            Session::flash('status','Patient '. $patient->firstname.' '.$patient->lastname .' registered');
+            Session::flash('status','Patient has been registered sucessfully');
 
             return redirect('patient');
         }else{
@@ -313,7 +323,8 @@ class PatientsController extends Controller
     public function show($id)
     {
         $patient = Patients::findOrFail($id);
-        return view('Patients.patient',compact('patient'));
+        $states = States::all();
+        return view('Patients.patient',compact('patient','states'));
     }
 
     /**
@@ -334,9 +345,26 @@ class PatientsController extends Controller
      * @param  \App\Patients  $patients
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patients $patients)
+    public function update(Request $request)
     {
-        //
+        $patient = Patients::where('id',$request->patient_id)->update([
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'email' => $request->email,
+            'phoneno' => $request->phone,
+            'address' => $request->address,
+            'lga_id' => $request->lga,
+            'state_id' => $request->state,
+            
+        ]);
+
+        if($patient){
+            Session::flash('status','Patient details updated sucessfully');
+            return back();
+        }else{
+            Session::flash('error','Error updating patient');
+            return back();
+        }
     }
 
     /**

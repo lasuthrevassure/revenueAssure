@@ -144,6 +144,19 @@ class RegisterController extends Controller
         return redirect()->back();
     }
 
+    public function updatepass(Request $request)
+    {
+        $password = Hash::make($request->password);
+
+        $user = User::where('id', $request->id)->update(['password' => $password]);
+
+         if($user){
+
+            $request->session()->flash('status', 'password updated successfully');
+            return redirect()->back();
+         }
+    }
+
 
     public function createrole()
     {

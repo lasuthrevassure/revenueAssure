@@ -68,7 +68,7 @@
                     <td>{{$patient->gender}}</td>
                     <td>{{$patient->email}}</td>
                     <td>{{$patient->dob}}</td>
-                    <td><a href="" data-toggle="modal" data-target="#ModalCenter" data-id="{{ $patient->id }}">Initiate request</a> &nbsp; <a href="{{route('viewpatient',$patient->id)}}">View</a></td>
+                    <td><a href="" data-toggle="modal" data-target="#certtifcatemodal" data-id="{{ $patient->id }}">Initiate request</a> &nbsp; <a href="{{route('viewpatient',$patient->id)}}">View</a></td>
                 </tr>
             @endforeach
           </tbody>
@@ -80,6 +80,39 @@
         <p class="text-center pt-5 size">No Record Found</p>
         <p class="text-center pb-5 size2">Try changing the filter or search term  or <span><a href="{{route('addpatient')}}">Register Patient</a> </span></p>
       @endif
+
+      <div class="modal fade" id="certtifcatemodal" tabindex="-1" role="dialog" aria-labelledby="certtifcatemodalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header text-center rounded-0">
+
+              <h5 class="modal-title w-100"  id="certtifcatemodalTitle">SELECT REQUEST TYPE</h5>
+                
+            </div>
+            <form method="post" action="{{route('storerequest')}}">
+              @csrf
+              <input type="hidden" id="patient_id" name="patient_id">
+              <div class="modal-body">
+                      
+                  <div class="form-group px-4">
+                      <label for="inputService">Select a certifcate/report</label>
+                      <select id="inputService" class="form-control" name="document">
+                          <option>select certificate/report</option>
+                          @foreach($documents as $document)
+                              <option value="{{$document->id}}">{{$document->name}} {{$document->amount}}</option>
+                          @endforeach
+                      </select>
+                  </div>
+                      
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btncan" data-dismiss="modal">CANCEL</button>
+                <button type="submit" class="btn btn-primary">INITIATE</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
 </div>
 
 <div class="container pag px-0">
@@ -89,38 +122,6 @@
       {{$patients->links()}}
     </ul>
   </nav>
-</div>
-
-<div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center rounded-0">
-
-        <h5 class="modal-title w-100"  id="ModalCenterTitle">SELECT REQUEST TYPE</h5>
-        
-      </div>
-      <form method="post" action="{{route('storerequest')}}">
-        @csrf
-        <input type="hidden" id="patient_id" name="patient_id">
-        <div class="modal-body">
-          <div class="form-group px-4">
-            <label for="inputService">Select a certifcate/report</label><p></p>
-            <select id="inputService" name="document" class="form-control">
-              <option>select certificate/report</option>
-              @foreach($documents as $document)
-                  <option value="{{$document->id}}">{{$document->name}} {{$document->amount}}</option>
-              @endforeach
-            </select>
-          </div>
-                  
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btncan" data-dismiss="modal">CANCEL</button>
-          <button type="submit" class="btn btn-primary">INITIATE</button>
-        </div>
-      </form>
-    </div>
-  </div>
 </div>
 
 @stop
@@ -136,10 +137,10 @@
     });
 
     $(function() {
-      $('#ModalCenter').on("show.bs.modal", function (e) {
+      $('#certtifcatemodal').on("show.bs.modal", function (e) {
           $("#patient_id").val($(e.relatedTarget).data('id'));
       });
-  });
+    });
 
 
 </script>

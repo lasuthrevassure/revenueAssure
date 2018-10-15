@@ -110,7 +110,7 @@
 
                         <div class="row">
                             <div class="col-md-3">
-                                <p class="uptext mb-2">{{ __('Attach Permission') }} <span class="text-danger aster" >*</span></p>
+                                <p class="uptext mb-2">{{ __('Attach Priviledge') }} <span class="text-danger aster" >*</span></p>
 
                             </div>
                             <div class="col-md-6 ml-auto">
