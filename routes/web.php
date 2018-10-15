@@ -65,3 +65,12 @@ Route::get('/payments/view/{id}', 'PaymentsController@show')->name('viewpayment'
 // Route::get('/document/form/{document}', 'PDFGeneratorController@showForm')->name('showForm');
 // Route::post('/document/form/{document}', 'PDFGeneratorController@indexForm')->name('indexForm');
 Route::get('/document/index', 'PDFGeneratorController@index')->name('documentIndex');
+
+//payment module
+Route::get('/signatures', 'SignatureController@index')->name('signatures');
+Route::get('/signatures/create', 'SignatureController@create')->name('create_signature');
+Route::post('/signatures/create', 'SignatureController@store')->name('store_signature');
+Route::get('/signatures/edit/{signature}', 'SignatureController@edit')->name('edit_signature');
+Route::post('/signatures/update/{signature}', 'SignatureController@update')->name('update_signature');
+Route::get('/signatures/view/{signature}', 'SignatureController@show')->name('show_signature');
+Route::post('/signatures/delete/{signature}', 'SignatureController@destroy')->name('delete_signature');
