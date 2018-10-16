@@ -716,13 +716,6 @@ label {
   background-color: #fdfdfd;
 }
 
-.content2 .rowpad select.long {
-  min-width: 350px;
-  height: 48px;
-  border-radius: 3px;
-  border: solid 1px #e5e5e5;
-  background-color: #fdfdfd;
-}
 .content2 .rowlen {
   height: 200px;
   overflow-y: scroll;

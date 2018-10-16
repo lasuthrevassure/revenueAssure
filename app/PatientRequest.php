@@ -9,7 +9,6 @@ class PatientRequest extends Model
 {
     use SoftDeletes;
     
-
     protected $table = 'requests';
 
     protected $fillable = [
