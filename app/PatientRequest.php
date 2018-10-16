@@ -9,6 +9,7 @@ class PatientRequest extends Model
 {
     use SoftDeletes;
     
+
     protected $table = 'requests';
 
     protected $fillable = [
@@ -20,6 +21,11 @@ class PatientRequest extends Model
     public function document()
     {
         return $this->belongsTo('App\Documents','document_id');
+    }
+
+    public function documentRequest()
+    {
+        return $this->hasOne('App\DocumentRequests','request_id');
     }
 
     public function patient()

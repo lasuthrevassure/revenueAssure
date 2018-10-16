@@ -1,18 +1,125 @@
 @extends('layouts.master')
 @section('content')
-    <div class="container-fluid p-0 search">
-        <div class="main-navbar bg-white">
-            <nav class="navbar d-flex align-items-stretch navbar-light flex-md-nowrap p-0">
-            <div class="main-navbar__search w-75" style=" background-color: #8188bf;">
-                <div class="input-group input-group-seamless ml-3">
-                <div class="input-group-prepend">
-                    <div class="input-group-text" style=" background-color: #8188bf;">
-                                <img src="{{asset('assets/image/twotone-how-to-reg-24-px.svg')}}" class="pr-2">
-                                <span class="d-none d-lg-inline d-md-inline" style="font-size:13px;"> Create Role</span>
-                    </div>
-                </div>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="tile">
+                <h3 class="tile-title">Create Role</h3>
+                <div class="tile-body">
+                    <form action="{{ route('addrole') }}" method="post">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p class="uptext mb-2">{{ __(' Name') }} <span class="text-danger aster" >*</span></p>
+
+                            </div>
+                            <div class="col-md-6 ml-auto">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="name" placeholder="Set a name" required autofocus>
+                                        @if ($errors->has('name'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('name') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                        </div>
+                        <div style="height:40px;"></div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p class="uptext mb-2">{{ __('Slug') }} <span class="text-danger aster" >*</span></p>
+
+                            </div>
+                            <div class="col-md-6 ml-auto">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <input id="slug" type="text" class="form-control{{ $errors->has('slug') ? ' is-invalid' : '' }}" name="slug" placeholder="What will you like the role to be called" required autofocus>
+                                        @if ($errors->has('slug'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('slug') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                        </div>
+
+                        <!--row5-->
+                        <div style="height:40px;"></div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p class="uptext mb-2">{{ __('Description') }} </p>
+
+                            </div>
+                            <div class="col-md-6 ml-auto">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <input id="description" type="text" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" placeholder="role description">
+                                        @if ($errors->has('description'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('description') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                        </div>
+
+                        <div style="height:40px;"></div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p class="uptext mb-2">{{ __('Attach Priviledge') }} <span class="text-danger aster" >*</span></p>
+
+                            </div>
+                            <div class="col-md-6 ml-auto">
+                                <div class="row">
+                                    <div class="col-md-10" id="listResults">
+                                        <div class="row text-muted">
+                                            <div class="custom-control custom-checkbox mx-3 checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="checkAll"><label class="custom-control-label" for="checkAll">Check All</label>
+                                            </div>
+                                        </div>
+                                        <hr/>       
+                                        <div class="row text-muted">
+                                            
+                                            @foreach($priviledges as $priviledge)
+                                                <div class="custom-control custom-checkbox mx-3 checkbox col-md-5">
+                                                    <input type="checkbox" name ="permissions[]" class="custom-control-input" id="customCheck1_{{ $priviledge->id }}" value="{{$priviledge->id}}">
+                                                    <label class="custom-control-label" for="customCheck1_{{ $priviledge->id }}">{{$priviledge->name}}</label>
+                                                </div>
+                                            @endforeach
+                                            
+                                        </div> 
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                        </div>
+
+                        <div style="height:40px;"></div>
+
+                        <div class="row">
+                            <div class="col-md-3">
 
             <a href="{{route('roles')}}" class="btn text-white rounded-0 w-25 pl-5" style="background-color: #7078b7;font-size:13px;"><img src="{{asset('assets/image/adduser.svg')}}"
                 class="adduser pr-2 pl-3"> <span class="d-none d-lg-inline d-md-inline" style="padding-top:12px;"> Roles</span></a>

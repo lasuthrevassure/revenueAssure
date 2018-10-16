@@ -75,7 +75,7 @@ Route::get('/payments/view/{id}', 'PaymentsController@show')->name('viewpayment'
 // Route::post('/document/form/{document}', 'PDFGeneratorController@indexForm')->name('indexForm');
 Route::get('/document/index', 'PDFGeneratorController@index')->name('documentIndex');
 
-//signature module
+//payment module
 Route::get('/signatures', 'SignatureController@index')->name('signatures');
 Route::get('/signatures/create', 'SignatureController@create')->name('create_signature');
 Route::post('/signatures/create', 'SignatureController@store')->name('store_signature');

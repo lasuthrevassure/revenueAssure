@@ -23,7 +23,7 @@
       </li>
       <li class="nav-item mb-2">
         <a class="nav-link request" href="{{route('requests')}}">
-          <img src="{{asset('assets/image/records.svg')}}" class="pr-2">        
+          <img src="{{asset('assets/image/records.svg')}}" class="pr-2">
           <span>Requests</span>
         </a>
         <!-- 2 -->
@@ -49,7 +49,7 @@
         </div>
         <!-- 3 -->
       </li>
-      
+
       <li class="nav-item mb-2">
         <a class="nav-link paymentmana" data-toggle="collapse" href="#payment" aria-expanded="false" aria-controls="payment">
           <img src="{{asset('assets/image/payment.svg')}}" class="pr-2">
@@ -109,19 +109,21 @@
       <li class="nav-item mb-2">
         <a class="nav-link" data-toggle="collapse" href="#support" aria-expanded="false" aria-controls="support">
           <img src="{{asset('assets/image/settings.svg')}}" class="pr-2">
-          <span>Support System</span>
+          <span>Reports/Certificates</span>
         </a>
         <div class="collapse" id="support">
           <ul class="nav flex-column ">
             <li class="nav-item">
-              <a class="nav-link" href="pages/ui-features/buttons.html">Signatures</a>
+              <a class="nav-link" href="/document/index">Create Medical Fitness Report</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/ui-features/typography.html">Add Signature</a>
+              <a class="nav-link" href="pages/ui-features/typography.html">View Reports/Certificates</a>
             </li>
           </ul>
         </div>
         <!-- 7 -->
       </li>
+
+
     </ul>
   </div>

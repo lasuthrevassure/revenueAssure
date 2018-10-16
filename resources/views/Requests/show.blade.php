@@ -7,6 +7,7 @@
         }
     </style>
     
+
 @stop
 @section('title')
     <div>
@@ -159,11 +160,15 @@
 
                 </div>
                 <div class="row justify-content-center mt-5 mb-4">
-                    <a href="{{route('requests')}}" class="btn savebtn mr-3" style="color:black;margin-top:5px">BACK</a>
-                    @if($patientrequest->status == '1') <button class="btn generate text-white">GENERATE REPORT</button> @endif
+                    <a href="window.history.go(-1); return false;" class="btn savebtn mr-3" style="color:black;margin-top:5px">BACK</a>
+                    @if($patientrequest->status == '1' && count( $patientrequest->documentRequest) )
+                           <button onclick="location.href = '{{ route('previewForm', ['documentRequest'=>$patientrequest->documentRequest->id]) }}'" class="btn generate text-white">VIEW REPORT</button> 
+                    @elseif($patientrequest->status == '1')
+                            <button onclick="location.href = '{{ route('showForm', ['document'=>$patientrequest->document_id, 'patientrequest'=>$patientrequest])}}'" class="btn generate text-white">GENERATE REPORT</button>
+                    @endif
                 </div>
             </div>
-                
+
         </div>
     </div>
 
@@ -186,8 +191,8 @@
                 $("#document").val($(e.relatedTarget).data('documentId'));
                 $("#document").text($(e.relatedTarget).data('document'));
             });
-        });   
-            
+        });
+
     });
 
 </script>
