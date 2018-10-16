@@ -3,14 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PatientRequest extends Model
 {
+    use SoftDeletes;
+    
     protected $table = 'requests';
 
     protected $fillable = [
         'user_id','patient_id', 'document_id'
     ];
+
+    protected $dates = ['deleted_at'];
 
     public function document()
     {
@@ -24,6 +29,6 @@ class PatientRequest extends Model
 
     public function payment()
     {
-        return $this->hasMany('App\Payments');
+        return $this->hasOne('App\Payments','request_id');
     }
 }

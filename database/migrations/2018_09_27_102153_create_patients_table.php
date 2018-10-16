@@ -27,6 +27,7 @@ class CreatePatientsTable extends Migration
 			$table->integer('lga_id');
             $table->integer('state_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

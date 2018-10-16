@@ -37,11 +37,11 @@
         <div class="collapse" id="patient">
           <ul class="nav flex-column ">
             <li class="nav-item">
-              <a class="nav-link search" href="{{route('searchpatient')}}">Search patient</a>
+              <a class="nav-link search" href="{{route('searchpatient')}}">Patients</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link patients" href="{{route('patient')}}">Patients</a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link addpat" href="{{route('addpatient')}}">New Patient</a>
             </li>
@@ -81,10 +81,7 @@
               <a class="nav-link alluser" href="{{route('users')}}">Users</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link aduser" href="{{route('register')}}">Add User</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link adroles" href="{{route('addrole')}}">Add Role</a>
+              <a class="nav-link aduser" href="{{route('roles')}}">Roles</a>
             </li>
           </ul>
         </div>

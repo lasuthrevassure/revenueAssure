@@ -28,22 +28,38 @@ Route::get('/patient/search', 'PatientsController@searchPatient')->name('searchp
 Route::post('/patient/search', 'PatientsController@searchPatient')->name('searchpatientfilter');
 Route::get('/search','PatientsController@search');
 Route::get('/patient/view/{id}','PatientsController@show')->name('viewpatient');
+Route::post('/patient/update','PatientsController@update')->name('updatepatient');
+Route::post('patient/delete','PatientsController@destroy')->name('deletepatient');
 
 // request module
 Route::get('/requests', 'RequestController@index')->name('requests');
+Route::post('/requests', 'RequestController@index')->name('requestfilter');
 Route::post('/request/add', 'RequestController@store')->name('storerequest');
 Route::get('request/view/{id}','RequestController@show')->name('viewrequest');
+Route::post('request/view','RequestController@update')->name('updaterequest');
+Route::post('request/delete','RequestController@destroy')->name('deleterequest');
 
 //user module
-Route::get('/users', 'Auth\RegisterController@index')->name('users');
-Route::get('/users/user/{id}', 'Auth\RegisterController@edit')->name('user');
-Route::post('/users/user/{id}', 'Auth\RegisterController@update')->name('user');
-Route::get('/role/add', 'Auth\RegisterController@createrole')->name('addrole');
-Route::post('/role/add', 'Auth\RegisterController@storerole')->name('addrole');
+Route::get('/users', 'UserController@index')->name('users');
+Route::post('/users', 'UserController@index')->name('userfilter');
+Route::get('/users/user/{id}', 'UserController@edit')->name('user');
+Route::post('/users/user/{id}', 'UserController@update')->name('user');
+Route::post('users/delete','UserController@destroyUser')->name('deleteuser');
+Route::get('/activate', 'UserController@activate');
+Route::get('/deactivate', 'UserController@deactivate');
+Route::get('/roles', 'UserController@allRoles')->name('roles');
+Route::get('/role/add', 'UserController@createrole')->name('addrole');
+Route::post('/role/add', 'UserController@storerole')->name('addrole');
+Route::get('/role/show/{id}', 'UserController@showrole')->name('showrole');
+Route::post('/role/show', 'UserController@updaterole')->name('updaterole');
+Route::post('role/delete','UserController@destroyRole')->name('deleterole');
+
 
 //payment module
 Route::get('/payments', 'PaymentsController@index')->name('payments');
+Route::post('/payments', 'PaymentsController@index')->name('paymentfilter');
 Route::get('/payments/requests', 'PaymentsController@payemntRequests')->name('paymentrequests');
+Route::post('/payments/requests', 'PaymentsController@payemntRequests')->name('paymentrequestfilter');
 Route::get('/payments/update/{id}', 'PaymentsController@create')->name('createpayment');
-Route::post('/payments/update/{id}', 'PaymentsController@store')->name('createpayment');
+Route::post('/payments/update', 'PaymentsController@store')->name('createpayment');
 Route::get('/payments/view/{id}', 'PaymentsController@show')->name('viewpayment');

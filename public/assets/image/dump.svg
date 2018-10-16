@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+    <g fill="none" fill-rule="evenodd">
+        <circle cx="50" cy="50" r="50" fill="#2691E9" fill-opacity=".05"/>
+        <g fill-rule="nonzero">
+            <path fill="#FFB74F" d="M30.455 39.7l23.7-23.7 15.39 15.391-23.7 23.7z"/>
+            <path fill="#FF9A00" d="M42.273 27.864L54.137 16l15.408 15.409-11.863 11.864z"/>
+            <path fill="#FFDF48" d="M54.09 16l-1.52 22.115-22.115 1.521z"/>
+            <path fill="#FFD400" d="M54.09 16l-1.52 21.818L42.273 27.66z"/>
+            <path fill="#266DD3" d="M70.455 43.273l-5.506 40H34.142l-5.506-40z"/>
+            <path fill="#4A90E2" d="M70.455 43.273l-5.506 40H49.545v-40z"/>
+            <path fill="#E1E4FB" d="M47.727 56h3.637v19.09h-3.637z"/>
+            <path fill="#C5C9F7" d="M59 75.09L60.455 56h-4L55 75.09z"/>
+            <path fill="#E1E4FB" d="M45 75.09L43.545 56h-4L41 75.09z"/>
+            <path fill="#4A90E2" d="M25 43.273h50v3.636H25z"/>
+            <path fill="#C5C9F7" d="M49.545 56h1.819v19.09h-1.819z"/>
+            <path fill="#266DD3" d="M49.545 43.273H75v3.636H49.545z"/>
+        </g>
+    </g>
+</svg>

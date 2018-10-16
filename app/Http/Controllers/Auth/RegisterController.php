@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Departments;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -45,13 +46,6 @@ class RegisterController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        $users = User::all();
-        return view('Users.index',compact('users'));
-    }
-
-
     /**
      * Get a validator for an incoming registration request.
      *
@@ -85,6 +79,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'phone' => $data['phone'],
+            'department_id' => $data['department_id'],
             'password' => Hash::make($password),
         ]);
 
@@ -106,64 +101,5 @@ class RegisterController extends Controller
     }
 
 
-    public function edit($id)
-    {
-        $user = User::findOrFail($id);
-        $roles = Role::all();
-        return view('Users.user',compact('user','roles'));
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        $role = $request['role'];
-        $password = Hash::make($request->password);
-
-        User::where('id', $id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => $password
-        ]);
-        
-        $user = User::where('email',$request->email)->first();
-        
-        if ($role){
-            if(count($user->roles) > 1)
-            {
-                $user->detachAllRoles();
-            }else{
-                $user->detachRole($user->roles);
-            }
-            
-            $user->syncRoles($role);
-        }
-
-        $request->session()->flash('status', 'User details updated');
-
-        return redirect()->back();
-    }
-
-
-    public function createrole()
-    {
-        $priviledges = Permission::all();
-        return view('Users.createrole',compact('priviledges'));
-    }
-
-
-    public function storerole(Request $request)
-    {
-        $role = Role::create([
-            'name' => $request->name,
-            'slug' => $request->slug,
-            'description' => $request->description,
-        ]);
-
-            if($role){
-                $role->syncPermissions($request->permissions);
-                session()->flash('status', 'role created');
-                return back();
-            }
-    }
+    
 }
