@@ -1,0 +1,69 @@
+{
+    "fields": {
+        "firstname": {
+            "label": "firstname",
+            "type": "text",
+            "span": "left"
+        },
+        "lastname": {
+            "label": "lastname",
+            "type": "text",
+            "span": "right"
+        },
+        "residential_address": {
+            "label": "Residing Address",
+            "type": "text",
+            "span": "full"
+        },
+        "age": {
+            "label": "age",
+            "type": "text",
+            "span": "full"
+        },
+        "last_seen_date": {
+            "label": "Last seen when",
+            "type": "text",
+            "span": "full"
+        },
+        "gender": {
+            "label": "gender",
+            "type": "text",
+            "span": "right"
+        },
+        "suffering_from": {
+            "label": "Suffered From",
+            "type": "text",
+            "span": "left"
+        },
+        "death_date": {
+            "label": "death date",
+            "type": "text",
+            "span": "right"
+        },
+        "death_time": {
+            "label": "death time",
+            "type": "text",
+            "span": "right"
+        },
+        "primary_cause": {
+            "label": "Primary Cause",
+            "type": "text",
+            "span": "left"
+        },
+        "secondary_cause": {
+            "label": "Secondary Cause",
+            "type": "text",
+            "span": "right"
+        },
+        "disease_time": {
+            "label": "Disease time",
+            "type": "text",
+            "span": "left"
+        },
+        "witness_date": {
+            "label": "witness date",
+            "type": "text",
+            "span": "right"
+        }
+    }
+}

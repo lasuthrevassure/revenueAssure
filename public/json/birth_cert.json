@@ -1,0 +1,54 @@
+{
+    "fields": {
+        "gender": {
+            "label": "Gender of the baby",
+            "type": "text",
+            "span": "left"
+        },
+        "father": {
+            "label": "Father's name",
+            "type": "text",
+            "span": "left"
+        },
+        "mother": {
+            "label": "Mother's name",
+            "type": "text",
+            "span": "right"
+        },
+        "residential_address": {
+            "label": "Residing Address",
+            "type": "text",
+            "span": "full"
+        },
+        "delivery_time": {
+            "label": "delivery_time",
+            "type": "text",
+            "span": "full"
+        },
+        "delivery_date": {
+            "label": "delivery_date",
+            "type": "text",
+            "span": "full"
+        },
+        "consultant": {
+            "label": "consultant",
+            "type": "text",
+            "span": "right"
+        },
+        "delivered_by": {
+            "label": "Delivered By",
+            "type": "text",
+            "span": "left"
+        },
+        "birth_weight": {
+            "label": "birth weight",
+            "type": "text",
+            "span": "right"
+        },
+        "chief_matron": {
+            "label": "Chief Matron",
+            "type": "text",
+            "span": "left"
+        }
+    }
+}

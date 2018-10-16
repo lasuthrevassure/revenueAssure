@@ -1,0 +1,44 @@
+{
+    "fields": {
+        "title": {
+            "label": "title",
+            "type": "text",
+            "span": "full"
+        },
+        "firstname": {
+            "label": "firstname",
+            "type": "text",
+            "span": "left"
+        },
+        "lastname": {
+            "label": "lastname",
+            "type": "text",
+            "span": "right"
+        },
+        "date_of_placement": {
+            "label": "Date of Placing on Sick List",
+            "type": "text",
+            "span": "left"
+        },
+        "duration_of_illness": {
+            "label": "Probable duration of illness",
+            "type": "text",
+            "span": "right"
+        },
+        "dept": {
+            "label": "dept",
+            "type": "text",
+            "span": "left"
+        },
+        "unit": {
+            "label": "unit",
+            "type": "text",
+            "span": "right"
+        },
+        "to_department": {
+            "label": "To the Head of the ",
+            "type": "text",
+            "span": "full"
+        }
+    }
+}

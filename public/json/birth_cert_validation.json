@@ -1,0 +1,12 @@
+{
+  "father": "required",
+  "mother": "required",
+  "residential_address": "required",
+  "delivery_time": "required",
+  "delivery_date": "required",
+  "consultant": "required",
+  "gender": "required",
+  "delivered_by": "required",
+  "birth_weight": "required",
+  "chief_matron": "required"
+}

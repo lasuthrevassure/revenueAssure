@@ -1,0 +1,59 @@
+{
+    "fields": {
+        "temperature": {
+            "label": "Temperature",
+            "type": "text",
+            "span": "left"
+        },
+        "ecg": {
+            "label": "E.C.G",
+            "type": "text",
+            "span": "right"
+        },
+        "hepatatitis": {
+            "label": "Hepatatitis B&C Antigen",
+            "type": "text",
+            "span": "left"
+        },
+        "fbs": {
+            "label": "F.B.S",
+            "type": "text",
+            "span": "right"
+        },
+        "hiv": {
+            "label": "HIV I&II",
+            "type": "text",
+            "span": "left"
+        },
+        "stool": {
+            "label": "stool",
+            "type": "text",
+            "span": "right"
+        },
+        "blood_pressure": {
+            "label": "Blood Pressure",
+            "type": "text",
+            "span": "left"
+        },
+        "urinalysis": {
+            "label": "urinalysis",
+            "type": "text",
+            "span": "right"
+        },
+        "genotype": {
+            "label": "genotype",
+            "type": "text",
+            "span": "left"
+        },
+        "ent": {
+            "label": "Ear, Nose and Type",
+            "type": "text",
+            "span": "right"
+        },
+        "pvg": {
+            "label": "pvg",
+            "type": "text",
+            "span": "left"
+        }
+    }
+}

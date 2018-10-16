@@ -1,0 +1,10 @@
+{
+  "title": "required",
+  "firstname": "required",
+  "lastname": "required",
+  "date_of_placement": "required",
+  "duration_of_illness": "required",
+  "dept": "required",
+  "unit": "required",
+  "to_department": "required"
+}

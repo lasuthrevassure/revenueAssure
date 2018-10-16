@@ -1,0 +1,13 @@
+{
+  "police_ref": "required",
+  "hospital_ref": "required",
+  "medical_ref": "required",
+  "report_date": "required",
+  "signed_date": "required",
+  "police": "required",
+  "firstname": "required",
+  "lastname": "required",
+  "gender": "required",
+  "complaint": "required",
+  "medical_statement": "required"
+}
